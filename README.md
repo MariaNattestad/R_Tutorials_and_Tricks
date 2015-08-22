@@ -1,5 +1,6 @@
 # R Tutorials and Tricks
 Code and example data from an R workshop I am teaching at CSHL
+Go to marianattestad.com/blog for more R tips and tricks.
 ##### Files:
 * **data_and_ggplot.R:** Workshop/Tutorial on reading in data, filtering, basic statistics, and using ggplot2 to create a variety of plots. 
 * **automatic_plotting.R:** Script that reads in data, filters, gives summary statistics, and aumatically creates and saves 3 plots as 3 different files. 
