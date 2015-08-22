@@ -4,7 +4,7 @@
 library(ggplot2)
 
 # Select a data file
-filename <- "example_variants.bed"
+filename <- "example_variants.txt"
 
 # Read the data into a data.frame
 my_data <- read.csv(filename, sep="\t", quote='', stringsAsFactors=FALSE,header=FALSE)
@@ -28,6 +28,7 @@ summary(my_data$type)
 ################################################
 # start new plot as a .png file
 plot.output.filename <- paste(filename,".event_size_by_event_type_500bp.png",sep="")
+
 png(file=plot.output.filename,width=800,height=800)
 
 # plot 1

@@ -6,7 +6,6 @@ filename <- "example_variants.bed"
 # Read the data into a data.frame
 my_data <- read.csv(filename, sep="\t", quote='', stringsAsFactors=TRUE,header=FALSE)
 
-
 head(my_data)
 
 names(my_data)
@@ -30,6 +29,7 @@ summary(my_data$chrom)
 
 # example of a basic t-test
 set1 <- my_data[my_data$type=="Insertion","size"]
+
 set2 <- my_data[my_data$type=="Deletion","size"]
 
 t.test(set1,set2)
@@ -46,8 +46,10 @@ t.test(set1,set2)
 ### A size histogram with each type as a different color
 ########################################################## 
 
-r <- ggplot(my_data,aes(x=size,fill=type))
+ggplot(my_data,aes(x=size,fill=type)) + geom_bar()
 
+
+r <- ggplot(my_data,aes(x=size,fill=type))
 r+geom_bar()
 
 # Too many combinations of types, let's keep it simple by filtering those combinations away
@@ -97,13 +99,14 @@ theme_set(theme_gray())
 theme_set(theme_gray(base_size = 24))
 
 # zoom in by setting where the x-axis should start and stop:
+r <- ggplot(my_data,aes(x=size,fill=type))
 r+geom_bar() + xlim(100,500)
 
 # now we might want smaller bins to show more resolution:
 r+geom_bar(binwidth=5) + xlim(100,500)
 
 # Let's rewrite the labels for the axes and the legend:
-r+geom_bar(binwidth=5) + xlim(100,500) +labs(x = "Variant size",y="Count",fill="Variant type")
+r+geom_bar(binwidth=5) + xlim(100,500) + labs(x = "Variant size",y="Count",fill="Variant type")
 
 # and finally we can always log-scale the y-axis:
 r+geom_bar(binwidth=5) + xlim(100,500) +labs(x = "Variant size",y="Count",fill="Variant type") + scale_y_log10()
@@ -135,7 +138,7 @@ basic.plot + scale_colour_brewer(type="qual",palette=2)
 basic.plot + scale_colour_brewer(type="qual",palette=7)
 
 basic.plot + scale_colour_brewer(type="seq",palette=1)
-basic.plot + scale_colour_brewer(type="div",palette=1)
+basic.plot + scale_colour_brewer(type="div",palette=2)
 ##########################################################
 
 ##########################################################
@@ -171,11 +174,15 @@ r+geom_bar()+labs(x = "Chromosome",y="Count",fill="Variant type")
 # and just be creative and try different combinations:
 
 ggplot(my_data,aes(x=chrom,y=size,fill=type, color=type)) + geom_point()
+
 ggplot(my_data,aes(x=chrom,y=size,fill=type, color=type)) + geom_point() + facet_grid(. ~ type)
+
 ggplot(my_data,aes(x=chrom,y=size,fill=type, color=type)) + geom_point() + facet_grid(type ~ .)
+
 ggplot(my_data,aes(x=chrom,y=size,fill=type, color=type)) + geom_boxplot() + facet_grid(. ~ type)
 
 ggplot(my_data,aes(x=ref.dist,y=query.dist,fill=type, color=type)) + geom_point() + facet_grid(type ~ chrom)
+
 ggplot(my_data,aes(x=size,fill=type, color=type)) + geom_dotplot() + facet_grid(. ~ type)
 
 
