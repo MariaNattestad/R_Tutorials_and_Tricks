@@ -1,7 +1,7 @@
 # R Tutorials and Tricks
-Code and example data from an R workshop I am teaching at CSHL
+Code and example data from an R workshop I taught at CSHL
 Go to  [marianattestad.com/blog](http://marianattestad.com/blog/) for more R tips and tricks.
-I am working on a book on plotting in R for biologists. Learn more here [marianattestad.com/book](http://marianattestad.com/book/)
+Or search YouTube for R for Biologists to find a video course I created after this workshop. 
 ##### Files:
 * **data_and_ggplot.R:** Workshop/Tutorial on reading in data, filtering, basic statistics, and using ggplot2 to create a variety of plots. 
 * **automatic_plotting.R:** Script that reads in data, filters, gives summary statistics, and aumatically creates and saves 3 plots as 3 different files. 
